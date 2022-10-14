@@ -31,6 +31,7 @@ function start-remediation-process{
 
     # Variables 
     $is_rebooted = $false
+    $looked = $false
     $is_process_running= $false
     $error_message = $null
 
@@ -50,9 +51,11 @@ function start-remediation-process{
                 if($result_process){
                     enable-Trace($false, "The process is up and running. Exit", $log_path)
                     break
-                } # The host is rebooted. Locked it
+                } # The host is rebooted. Locked it and notify IT department
                 elseif($is_rebooted){
                     start-looked -ComputerName $ComputerName -log_path $log_path
+                    $looked = $true
+                    break
                 }
                 else{
                     # Starting reboot .. 
@@ -71,7 +74,7 @@ function start-remediation-process{
                 break
             }
        }
-       while(-not $is_rebooted -and -not $is_reboot -and -not $is_process_running)
+       while(-not $looked )
 
     }
     catch{

@@ -9,7 +9,7 @@
 # licensed works and modifications, which include larger works using a licensed work, under the same license. 
 # Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
 
-Import-Module -Name .\modules.ps1 -Force
+Import-Module -Name .\modules.psm1 -Force
 
 function start-remediation-process{
     [cmdletbinding()]

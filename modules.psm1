@@ -25,7 +25,7 @@ function enable-Trace{
     )
     
     $error_result = $null
-    [string]$dateTime = get-date -format "yyyy-MM-dd_HH:mm:ss"
+    [string]$dateTime = get-date -format "yyyy-MM-dd_HH_mm_ss"
     [string]$log_file = $dateTime+".log"
 
     $log_path= $path,$log_file -join("\")

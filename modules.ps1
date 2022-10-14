@@ -25,17 +25,19 @@ function enable-Trace{
     )
     
     $error_result = $null
-    [string]$dateTime = get-date -format "yyyy-MM-dd-HH:mm:ss"
-    $log_file = $dateTime+".log"
+    [string]$dateTime = get-date -format "yyyy-MM-dd_HH:mm:ss"
+    [string]$log_file = $dateTime+".log"
 
     $log_path= $path,$log_file -join("\")
+
+    Write-Host $log_path
  
     switch ($result) {
         $true { $error_result = "ERROR" }
         $false { $error_result = "INFO" } 
     }
 
-    $dateTime+" - "+$error_result+" - "+$message+"\r\n" | Out-File $log_path -Append
+    $dateTime+" - "+$error_result+" - "+$message | Out-File -FilePath $log_path -Append
 
 }
 
@@ -153,3 +155,6 @@ function start-looked{
     enable-Trace($false, $message, $log_path)
 
 }
+
+
+enable-Trace -result $true -message "hola" -path "C:\Users\FernandoMendezRequen\Desktop"

@@ -100,7 +100,7 @@ function start-process{
     return $result
 }
 
-function reboot{
+function start-reboot{
     [cmdletbinding()]
     Param (
         [Parameter(Mandatory=$true)]
@@ -128,7 +128,7 @@ function reboot{
     return $rebooted
 }
 
-function looked{
+function start-looked{
     [cmdletbinding()]
     Param (
         [Parameter(Mandatory=$true)]
@@ -141,5 +141,4 @@ function looked{
     $message = "The machine: "+$ComputerName+" has been looked and the support team has been notified"
     enable-Trace($false, $message, $log_path)
 
-    return $message
 }
